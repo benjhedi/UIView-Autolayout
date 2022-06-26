@@ -1,3 +1,3 @@
 # UIViewAutolayout
 
-A description of this package.
+UIView extension to easily create common Auto Layout Constraints for iOS.
