@@ -224,10 +224,10 @@ extension UIView {
 	/// Creates an NSLayoutConstraint using its factory method given both views, attributes a relation and offset
 	private func createConstraint(attribute attr1: NSLayoutConstraint.Attribute, toView: UIView?, attribute attr2: NSLayoutConstraint.Attribute, relation: NSLayoutConstraint.Relation, constant: CGFloat) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(
-			item: self,
+			item: toView,
 			attribute: attr1,
 			relatedBy: relation,
-			toItem: toView,
+			toItem: nil,
 			attribute: attr2,
 			multiplier: 1.0,
 			constant: constant)
