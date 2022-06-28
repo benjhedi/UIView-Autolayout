@@ -227,7 +227,7 @@ extension UIView {
 		toView?.translatesAutoresizingMaskIntoConstraints = false
 		translatesAutoresizingMaskIntoConstraints = false
 		if let view = toView {
-		    addConstraint(constraint)
+		    view.addConstraint(constraint)
 		} else {
 		    superview?.addConstraint(constraint)
 		}
