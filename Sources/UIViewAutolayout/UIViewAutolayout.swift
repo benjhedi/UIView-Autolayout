@@ -226,10 +226,10 @@ extension UIView {
 	private func addConstraint(_ constraint: NSLayoutConstraint, toView: UIView?) {
 		toView?.translatesAutoresizingMaskIntoConstraints = false
 		translatesAutoresizingMaskIntoConstraints = false
-		if let superview = toView {
-		    superview.addConstraint(constraint)
-		} else {
+		if let view = toView {
 		    addConstraint(constraint)
+		} else {
+		    superview.addConstraint(constraint)
 		}
 	}
 
