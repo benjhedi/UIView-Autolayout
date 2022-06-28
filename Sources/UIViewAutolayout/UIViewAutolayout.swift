@@ -229,7 +229,7 @@ extension UIView {
 		if let view = toView {
 		    addConstraint(constraint)
 		} else {
-		    superview.addConstraint(constraint)
+		    superview?.addConstraint(constraint)
 		}
 	}
 
