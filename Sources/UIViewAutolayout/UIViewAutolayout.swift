@@ -227,7 +227,7 @@ extension UIView {
 			item: toView,
 			attribute: attr1,
 			relatedBy: relation,
-			toItem: nil,
+			toItem: attr2 == .notAnAttribute ? nil : toView.superView,
 			attribute: attr2,
 			multiplier: 1.0,
 			constant: constant)
