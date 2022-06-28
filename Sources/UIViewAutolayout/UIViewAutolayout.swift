@@ -226,7 +226,11 @@ extension UIView {
 	private func addConstraint(_ constraint: NSLayoutConstraint, toView: UIView?) {
 		toView?.translatesAutoresizingMaskIntoConstraints = false
 		translatesAutoresizingMaskIntoConstraints = false
-		addConstraint(constraint)
+		if let superview = toView {
+		    superview.addConstraint(constraint)
+		} else {
+		    addConstraint(constraint)
+		}
 	}
 
 	/// Creates an NSLayoutConstraint using its factory method given both views, attributes a relation and offset
