@@ -189,9 +189,9 @@ extension UIView {
 	 :returns: The created NSLayoutConstraint for this width layout relation
 	*/
 	@discardableResult
-	public func addWidthConstraint(toView view: UIView?, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
-		let constraint = createConstraint(attribute: .width, toView: view, attribute: .notAnAttribute, relation: relation, constant: constant)
-		addConstraint(constraint, toView: view)
+	public func addWidthConstraint(relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+		let constraint = createConstraint(attribute: .width, toView: self, attribute: .notAnAttribute, relation: relation, constant: constant)
+		addConstraint(constraint)
 
 		return constraint
 	}
@@ -206,9 +206,9 @@ extension UIView {
 	 :returns: The created NSLayoutConstraint for this height layout relation
 	*/
 	@discardableResult
-	public func addHeightConstraint(toView view: UIView?, relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
-		let constraint = createConstraint(attribute: .height, toView: view, attribute: .notAnAttribute, relation: relation, constant: constant)
-		addConstraint(constraint, toView: view)
+	public func addHeightConstraint(relation: NSLayoutConstraint.Relation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+		let constraint = createConstraint(attribute: .height, toView: self, attribute: .notAnAttribute, relation: relation, constant: constant)
+		addConstraint(constraint)
 
 		return constraint
 	}
@@ -216,17 +216,18 @@ extension UIView {
 	// MARK: - Private
 	/// Adds an NSLayoutConstraint to the superview
 	private func addConstraint(_ constraint: NSLayoutConstraint, toView: UIView?) {
-		toView?.translatesAutoresizingMaskIntoConstraints = false
+		toView?.translatesAutoresizingMaskIntoConstraints = 
+		translatesAutoresizingMaskIntoConstraints = false
 		addConstraint(constraint)
 	}
 
 	/// Creates an NSLayoutConstraint using its factory method given both views, attributes a relation and offset
 	private func createConstraint(attribute attr1: NSLayoutConstraint.Attribute, toView: UIView?, attribute attr2: NSLayoutConstraint.Attribute, relation: NSLayoutConstraint.Relation, constant: CGFloat) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(
-			item: toView,
+			item: self,
 			attribute: attr1,
 			relatedBy: relation,
-			toItem: attr2 == .notAnAttribute ? nil : self,
+			toItem: toView,
 			attribute: attr2,
 			multiplier: 1.0,
 			constant: constant)
